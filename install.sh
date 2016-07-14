@@ -33,7 +33,11 @@ mkdir Guzunty
     sudo make install
 )
 
-sudo cp tingbot-flasher.service /lib/systemd/system
-sudo systemctl enable tingbot-flasher.service
+cd factory-sd
+(
+    sudo cp tbflash /usr/bin/tbflash
+    sudo cp tingbot-flasher.service /lib/systemd/system
+    sudo systemctl enable tingbot-flasher.service
+)
 
 sudo shutdown -r now
