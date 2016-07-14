@@ -1,0 +1,69 @@
+#!/bin/bash
+
+cd "$(dirname "$(realpath "$0")")"
+
+while true; do
+    clear
+    echo ""
+    echo ""
+    echo ""
+    echo "           _   _             _           _      "
+    echo "          | | (_)           | |         | |     "
+    echo "          | |_ _ _ __   __ _| |__   ___ | |_    "
+    echo "          | __| | '_ \ / _  | '_ \ / _ \| __|   "
+    echo "          | |_| | | | | (_| | |_) | (_) | |_    "
+    echo "           \__|_|_| |_|\__, |_.__/ \___/ \__|   "
+    echo "                        __/ |                   "
+    echo "                       |___/                    "
+    echo ""
+    echo ""
+    echo "          Tingbot's Xilinx chip flashing program"
+    echo ""
+    echo "          Version 1.0"
+    echo ""
+    echo "          Press return to start flashing a Xilinx chip."
+    echo ""
+    echo ""
+    echo ""
+    echo ""
+
+    read -s
+
+    sudo gz_load /home/pi/Guzunty/Pi/src/gz_lcd/gz_lcd.xsvf
+
+    return_code=$?
+
+    if [[ $return_code -ne 0 ]]; then
+        echo ""
+        echo ""
+        echo ""
+        echo ""
+        echo "          XxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxX"
+        echo ""
+        echo "          Failed to flash Xilinx chip."
+        echo ""
+        echo "          XxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxX"
+        echo ""
+        echo "          Please check the chip is correctly connected and try again."
+        echo ""
+        echo "          Press return to continue."
+        echo ""
+        echo ""
+        echo ""
+    else
+        echo ""
+        echo ""
+        echo ""
+        echo ""
+        echo "          Success!"
+        echo ""
+        echo "          Press return to continue."
+        echo ""
+        echo ""
+        echo ""
+    fi
+    
+    read -s
+done;
+
+sudo shutdown -r now

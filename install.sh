@@ -1,3 +1,5 @@
+#!/bin/bash
+
 set -o errexit
 set -o xtrace
 
@@ -31,8 +33,7 @@ mkdir Guzunty
     sudo make install
 )
 
-# update tingbot-python to get backlight support
-sudo pip install tingbot-python==0.5.0
+sudo cp tingbot-flasher.service /lib/systemd/system
+sudo systemctl enable tingbot-flasher.service
 
-sudo raspi-config --expand-rootfs
 sudo shutdown -r now
